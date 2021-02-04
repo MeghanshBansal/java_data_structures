@@ -1,7 +1,8 @@
 public class SinglyLinkedList<T> {
-    Node<T> head = null;
+    Node<T> head;
 
     public SinglyLinkedList() {
+        head = null;
     }
 
     public SinglyLinkedList(T value) {
@@ -40,6 +41,14 @@ public class SinglyLinkedList<T> {
         }
     }
 
+    public void insertAtBegining(T n) {
+        Node<T> temp = new Node<>();
+        temp.value = n;
+        temp.next = head;
+        head = temp;
+    }
+
+
     public int length() {
         Node<T> current = head;
         int length = 0;
@@ -63,7 +72,7 @@ public class SinglyLinkedList<T> {
             this.head = this.head.next;
         } else {
             Node<T> current = head;
-            while (current.next!=null && current.next.value != value ) {
+            while (current.next != null && current.next.value != value) {
                 current = current.next;
             }
             assert current.next != null;
@@ -77,5 +86,21 @@ public class SinglyLinkedList<T> {
             System.out.println(current.value);
             current = current.next;
         }
+    }
+
+    public T get(int index) {
+        Node<T> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.value;
+    }
+
+    public void set(int index, T value){
+        Node<T> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        current.value = value;
     }
 }
