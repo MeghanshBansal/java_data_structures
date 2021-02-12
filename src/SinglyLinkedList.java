@@ -60,16 +60,22 @@ public class SinglyLinkedList<T> {
     }
 
     public void delete() {
-        Node<T> current = this.head;
-        while (current.next.next != null) {
-            current = current.next;
+        if (head == null) {
+            System.out.println("Empty list");
+        } else {
+            Node<T> current = this.head;
+            while (current.next.next != null) {
+                current = current.next;
+            }
+            current.next = null;
         }
-        current.next = null;
     }
 
     public void delete(T value) {
+        boolean found = false;
         if (this.head.value == value) {
             this.head = this.head.next;
+            found = true;
         } else {
             Node<T> current = head;
             while (current.next != null && current.next.value != value) {
@@ -77,6 +83,10 @@ public class SinglyLinkedList<T> {
             }
             assert current.next != null;
             current.next = current.next.next;
+            found = true;
+        }
+        if (!found) {
+            System.out.println("Element not exit");
         }
     }
 
@@ -89,11 +99,15 @@ public class SinglyLinkedList<T> {
     }
 
     public T get(int index) {
-        Node<T> current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
+        if (index >= length()) {
+            throw new IndexOutOfBoundsException();
+        } else {
+            Node<T> current = head;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+            return current.value;
         }
-        return current.value;
     }
 
     public void set(int index, T value) {
@@ -107,7 +121,7 @@ public class SinglyLinkedList<T> {
     public T getMiddle() {
         Node<T> current = head;
         Node<T> doublecurrent = head;
-        while (doublecurrent.next!=null && doublecurrent.next.next != null) {
+        while (doublecurrent.next != null && doublecurrent.next.next != null) {
             current = current.next;
             doublecurrent = doublecurrent.next.next;
         }

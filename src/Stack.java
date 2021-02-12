@@ -1,3 +1,5 @@
+import java.util.EmptyStackException;
+
 public class Stack<T> {
     private Node<T> top;
 
@@ -33,23 +35,35 @@ public class Stack<T> {
     }
 
     public T pop() {
-        Node<T> current = this.top;
-        top = top.next;
-        return current.value;
+        if (top == null) {
+            throw new EmptyStackException();
+        } else {
+            Node<T> current = this.top;
+            top = top.next;
+            return current.value;
+        }
     }
 
     public T peek() {
-        Node<T> current = this.top;
-        return current.value;
+        if (top==null){
+            throw new EmptyStackException();
+        }else {
+            Node<T> current = this.top;
+            return current.value;
+        }
     }
 
     public void swap() {
-        Node<T> current = this.top;
-        Node<T> temp = this.top.next;
-        Node<T> p = current;
-        current.next = temp.next;
-        temp.next = p;
-        top = temp;
+        if (top!=null && top.next!=null) {
+            Node<T> current = this.top;
+            Node<T> temp = this.top.next;
+            Node<T> p = current;
+            current.next = temp.next;
+            temp.next = p;
+            top = temp;
+        }else{
+            System.out.println("Not enought elements");
+        }
     }
 
     public void roll() {
