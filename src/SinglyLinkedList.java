@@ -96,11 +96,22 @@ public class SinglyLinkedList<T> {
         return current.value;
     }
 
-    public void set(int index, T value){
+    public void set(int index, T value) {
         Node<T> current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
         current.value = value;
     }
+
+    public T getMiddle() {
+        Node<T> current = head;
+        Node<T> doublecurrent = head;
+        while (doublecurrent.next!=null && doublecurrent.next.next != null) {
+            current = current.next;
+            doublecurrent = doublecurrent.next.next;
+        }
+        return current.value;
+    }
+
 }
