@@ -48,7 +48,6 @@ public class SinglyLinkedList<T> {
         head = temp;
     }
 
-
     public int length() {
         Node<T> current = head;
         int length = 0;
@@ -62,6 +61,8 @@ public class SinglyLinkedList<T> {
     public void delete() {
         if (head == null) {
             System.out.println("Empty list");
+        }else if(head.next==null){
+            head=null;
         } else {
             Node<T> current = this.head;
             while (current.next.next != null) {
@@ -98,6 +99,18 @@ public class SinglyLinkedList<T> {
         }
     }
 
+    public T get() throws Exception {
+        if (head==null){
+            throw new Exception("List is empty");
+        }else {
+            Node<T> current = head;
+            while (current != null) {
+                current = current.next;
+            }
+            return current.value;
+        }
+    }
+
     public T get(int index) {
         if (index >= length()) {
             throw new IndexOutOfBoundsException();
@@ -110,14 +123,6 @@ public class SinglyLinkedList<T> {
         }
     }
 
-    public void set(int index, T value) {
-        Node<T> current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
-        }
-        current.value = value;
-    }
-
     public T getMiddle() {
         Node<T> current = head;
         Node<T> doublecurrent = head;
@@ -127,5 +132,4 @@ public class SinglyLinkedList<T> {
         }
         return current.value;
     }
-
 }

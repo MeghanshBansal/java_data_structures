@@ -4,21 +4,21 @@ public class CircularLinkedList<T> {
     public CircularLinkedList() {
     }
 
-    public CircularLinkedList(T n) {
+    public CircularLinkedList(T value) {
         this.head = new Node<>();
-        this.head.value = n;
+        this.head.value = value;
         this.head.next = this.head;
     }
 
-    public void insert(T n) {
+    public void insert(T value) {
         if (this.head == null) {
             this.head = new Node<>();
-            this.head.value = n;
+            this.head.value = value;
             this.head.next = this.head;
         } else {
             Node<T> current = this.head;
             Node<T> temp = new Node<>();
-            temp.value = n;
+            temp.value = value;
             while (current.next != head) {
                 current = current.next;
             }
@@ -27,10 +27,10 @@ public class CircularLinkedList<T> {
         }
     }
 
-    public void insert(T n, int index) {
+    public void insert(T value, int index) {
         Node<T> current = head;
         Node<T> temp = new Node<>();
-        temp.value = n;
+        temp.value = value;
         for (int i = 1; i < index; i++) {
             current = current.next;
         }
@@ -67,6 +67,40 @@ public class CircularLinkedList<T> {
             }
             current.next = current.next.next;
         }
+    }
+
+    public T get() throws Exception {
+        if (head == null) {
+            throw new Exception("list is empty");
+        } else {
+            Node<T> current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            return current.value;
+        }
+    }
+
+    public T get(int index) {
+        if (index >= length()) {
+            throw new IndexOutOfBoundsException();
+        } else {
+            Node<T> current = head;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+            return current.value;
+        }
+    }
+
+    public T getmiddle() {
+        Node<T> current = head;
+        Node<T> doublecurrent = head;
+        while (doublecurrent.next != head && doublecurrent.next.next != head) {
+            current = current.next;
+            doublecurrent = doublecurrent.next.next;
+        }
+        return current.value;
     }
 
     public void show() {
