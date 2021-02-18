@@ -35,6 +35,6 @@ public class PostfixCalculation {
                 stack.push(calculate(op1, op2, s));
             }
         }
-        System.out.println(stack.pop());
+        System.out.println("Result: " + stack.pop());
     }
 }
