@@ -34,6 +34,10 @@ public class DynamicArray<T> {
         this.capacity = size;
     }
 
+    public boolean isEmpty() {
+        return length == 0;
+    }
+
     public void insert(T value) {
         if (length == capacity) {
             System.out.println(length);

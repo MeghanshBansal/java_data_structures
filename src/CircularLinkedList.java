@@ -10,6 +10,10 @@ public class CircularLinkedList<T> {
         this.head.next = this.head;
     }
 
+    public boolean isEmpty() {
+        return this.head.next == this.head;
+    }
+
     public void insert(T value) {
         if (this.head == null) {
             this.head = new Node<>();

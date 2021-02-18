@@ -10,6 +10,10 @@ public class SinglyLinkedList<T> {
         this.head.value = value;
     }
 
+    public boolean isEmpty() {
+        return this.head == null;
+    }
+
     public void insert(T n) {
         if (this.head == null) {
             this.head = new Node<T>();
@@ -61,8 +65,8 @@ public class SinglyLinkedList<T> {
     public void delete() {
         if (head == null) {
             System.out.println("Empty list");
-        }else if(head.next==null){
-            head=null;
+        } else if (head.next == null) {
+            head = null;
         } else {
             Node<T> current = this.head;
             while (current.next.next != null) {
@@ -100,9 +104,9 @@ public class SinglyLinkedList<T> {
     }
 
     public T get() throws Exception {
-        if (head==null){
+        if (head == null) {
             throw new Exception("List is empty");
-        }else {
+        } else {
             Node<T> current = head;
             while (current != null) {
                 current = current.next;

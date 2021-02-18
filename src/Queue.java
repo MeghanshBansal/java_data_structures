@@ -13,6 +13,10 @@ public class Queue<T> {
         this.back = front;
     }
 
+    public boolean isEmpty() {
+        return front == back;
+    }
+
     public void push(T value) {
         if (this.front == null) {
             Node<T> temp = new Node<>();

@@ -9,6 +9,10 @@ public class DoublyLinkedList<T> {
         this.head.value = value;
     }
 
+    public boolean isEmpty() {
+        return this.head == null;
+    }
+
     public void insert(T value) {
         if (this.head == null) {
             this.head = new Node<T>();

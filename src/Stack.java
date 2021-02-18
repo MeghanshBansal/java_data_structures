@@ -11,6 +11,10 @@ public class Stack<T> {
         this.top.value = value;
     }
 
+    public boolean isEmpty() {
+        return this.top == null;
+    }
+
     public int length() {
         Node<T> current = this.top;
         int length = 0;
@@ -45,23 +49,23 @@ public class Stack<T> {
     }
 
     public T peek() {
-        if (top==null){
+        if (top == null) {
             throw new EmptyStackException();
-        }else {
+        } else {
             Node<T> current = this.top;
             return current.value;
         }
     }
 
     public void swap() {
-        if (top!=null && top.next!=null) {
+        if (top != null && top.next != null) {
             Node<T> current = this.top;
             Node<T> temp = this.top.next;
             Node<T> p = current;
             current.next = temp.next;
             temp.next = p;
             top = temp;
-        }else{
+        } else {
             System.out.println("Not enought elements");
         }
     }
