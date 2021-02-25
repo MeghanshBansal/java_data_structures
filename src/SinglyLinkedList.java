@@ -127,6 +127,18 @@ public class SinglyLinkedList<T> {
         }
     }
 
+    public int getIndex(T value) {
+        Node<T> current = head;
+        for (int i = 0; i < length(); i++) {
+            if (current.value == value) {
+                return i;
+            } else {
+                current = current.next;
+            }
+        }
+        return -1;
+    }
+
     public T getMiddle() {
         Node<T> current = head;
         Node<T> doublecurrent = head;
