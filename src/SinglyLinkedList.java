@@ -97,33 +97,25 @@ public class SinglyLinkedList<T> {
         }
     }
 
-    public void deleteList(){
+    public void deleteList() {
         this.head = null;
     }
 
-    public int checkloop(){
+    public int checkloop() {
         int index = 0;
         Node<T> current = this.head;
         HashMap<Node<T>, Boolean> map = new HashMap<>();
         for (int i = 0; i < length(); i++) {
-            if (map.get(current)!=true) {
+            if (map.get(current) != true) {
                 map.put(current, true);
                 current = current.next;
                 index++;
-            }else{
-               return index;
+            } else {
+                return index;
             }
         }
         return -1;
     }
-
-//    public int looplength(){
-//        if (checkloop()==-1){
-//            return 0;
-//        }else{
-//            NOde<T> current = head;
-//        }
-//    }
 
     public void show() {
         Node<T> current = head;
@@ -177,5 +169,17 @@ public class SinglyLinkedList<T> {
             doublecurrent = doublecurrent.next.next;
         }
         return current.value;
+    }
+    public T getfromlast(int n){
+        Node<T> current = this.head;
+        Node<T> current_next = this.head;
+        for(int i = 0; i< n-1; i++){
+            current = current.next;
+        }
+        while(current.next!=null){
+            current = current.next;
+            current_next = current_next.next;
+        }
+        return current_next.value;
     }
 }
